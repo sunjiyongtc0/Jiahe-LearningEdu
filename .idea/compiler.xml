@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="jiahe-api" />
+        <module name="jiahe-common" />
+        <module name="jiahe-learningedu" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="jiahe-api" target="1.8" />
+      <module name="jiahe-common" target="1.8" />
+      <module name="JiaHe-LearningEdu" target="1.8" />
+      <module name="jiahe-learningedu" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="jiahe-api" options="-parameters" />
+      <module name="jiahe-common" options="-parameters" />
+      <module name="jiahe-learningedu" options="-parameters" />
+    </option>
+  </component>
+</project>

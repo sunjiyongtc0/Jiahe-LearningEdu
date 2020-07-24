@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<#include "/header.html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<style>
+
+</style>
+<body>
+<div id="mapp">
+    <div v-show="showList" >
+        <!--  ///////部门列表信息  -->
+         <el-button type="primary" @click="add()">新增</el-button>
+        <el-table
+                :data="tableData"
+                style="width: 90%"
+                height="500px">
+            <el-table-column
+                    fixed
+                    prop="deptId"
+                    label="部门ID"
+                    width="100">
+            </el-table-column>
+            <el-table-column
+                    prop="name"
+                    label="部门名称"
+                    width="200">
+            </el-table-column>
+            <el-table-column
+                    prop="parentName"
+                    label="上属部门"
+                    width="200">
+            </el-table-column>
+            <el-table-column
+                    prop="orderNum"
+                    label="排序"
+                    width="100">
+            </el-table-column>
+            <el-table-column
+                    prop="delFlag"
+                    label="状态"
+                    width="100">
+            </el-table-column>
+            <el-table-column
+                    fixed="right"
+                    label="操作"
+                    width="100">
+                <template slot-scope="scope">
+                    <el-button @click="editClick(scope.row)" type="text" size="small">编辑</el-button>
+                    <el-button  @click="delClick(scope.row)" type="text" size="small">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </div>
+    <div v-if="!showList">
+        <el-button type="primary" @click="back()">取消/返回</el-button>
+        <iframe scrolling="yes" frameborder="0" style="width:100%;height:600px;overflow:visible;background:#fff;" :src="index"></iframe>
+    </div>
+</div>
+<script>
+
+    var vm = new Vue({
+        el: '#mapp',
+        data:{
+            src:"${request.contextPath}/statics/img/bg.jpg",
+            tableData: [],
+            showList:true,
+            index:"deptInfo.html/0",
+        },
+        methods: {
+            init(){
+                let _this=this;
+                $.get("api/dept/list",function (result) {
+                    if(result.length>0){
+                        _this.tableData=result;
+                    }else{
+                        _this.tableData=[];
+                    }
+                    // if(result.code == 0){//登录成功
+                    //     _this.tableData=result.page.list
+                    // }else {
+                    //     _this.$message({
+                    //         showClose: true,
+                    //         message: result.msg,
+                    //         type: 'error'
+                    //     });
+                    // }
+                });
+                _this.showList=true;
+
+            },
+            add(){
+                this.showList=false;
+            },
+            back(){
+                this.init();
+            },
+            editClick(row) {
+                this.index="deptInfo.html/"+row.deptId;
+                this.showList=false;
+            },
+            delClick(row) {
+                let _this=this;
+                $.ajax({
+                    type: "DELETE",
+                    url:  "api/dept/del/"+row.deptId,
+                    contentType: "application/json",
+                    success: function(r){
+                        if(r.code == 0){
+                            _this.init();
+                            // alert('操作成功', function(){
+                            //     vm.reload();
+                            // });
+                        }else{
+                            alert(r.msg);
+                        }
+                    }
+                });
+            }
+        },
+        created(){
+           this.init();
+        }
+    })
+</script>
+</body>
+</html>

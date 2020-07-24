@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<#include "/header.html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<style>
+
+</style>
+<body>
+<div id="mapp">
+    <div v-show="showList" >
+        <!--  ///////日志列表信息  -->
+        <el-table
+                :data="tableData"
+                style="width: 90%"
+                height="500px">
+            <el-table-column
+                    fixed
+                    prop="username"
+                    label="操作用户"
+                    width="100">
+            </el-table-column>
+            <el-table-column
+                    prop="operation"
+                    label="用户操作"
+                    width="100">
+            </el-table-column>
+            <el-table-column
+                    prop="method"
+                    label="请求方法"
+                    width="120">
+            </el-table-column>
+            <el-table-column
+                    prop="params"
+                    label="请求参数"
+                    width="160">
+            </el-table-column>
+            <el-table-column
+                    prop="time"
+                    label="执行时长(毫秒)"
+                    width="130">
+            </el-table-column>
+            <el-table-column
+                    prop="ip"
+                    label="IP地址"
+                    width="120">
+            </el-table-column>
+            <el-table-column
+                    prop="createDate"
+                    label="创建时间"
+                    width="110">
+            </el-table-column>
+            <el-table-column
+                    fixed="right"
+                    label="操作"
+                    width="60">
+                <template slot-scope="scope">
+                    <el-button  @click="delClick(scope.row)" type="text" size="small">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </div>
+</div>
+<script>
+
+    var vm = new Vue({
+        el: '#mapp',
+        data:{
+            src:"${request.contextPath}/statics/img/bg.jpg",
+            tableData: [],
+            showList:true,
+        },
+        methods: {
+            init(){
+                let _this=this;
+                $.get("api/log/list",function (result) {
+                    if(result.code == 0){//登录成功
+                        _this.tableData=result.page.list
+                    }else {
+                        _this.$message({
+                            showClose: true,
+                            message: result.msg,
+                            type: 'error'
+                        });
+                    }
+                });
+                _this.showList=true;
+
+            },
+            delClick(row) {
+                let _this=this;
+                $.ajax({
+                    type: "DELETE",
+                    url:  "api/log/del/"+row.id,
+                    contentType: "application/json",
+                    success: function(r){
+                        if(r.code == 0){
+                            _this.init();
+                            // alert('操作成功', function(){
+                            //     vm.reload();
+                            // });
+                        }else{
+                            alert(r.msg);
+                        }
+                    }
+                });
+            }
+        },
+        created(){
+           this.init();
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<#include "/header.html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<style>
+
+</style>
+<body>
+    <div id="mapp">
+        <input type="hidden"  id="role" value="${role}">
+       <el-form ref="form" :model="form" label-width="80px">
+            <el-form-item label="角色名称">
+                <el-input v-model="form.roleName"></el-input>
+            </el-form-item>
+           <el-form-item label="所在部门">
+               <el-select v-model="form.deptId" placeholder="请选择所在部门">
+                   <el-option
+                           v-for="dept in deptList"
+                           :key="dept.deptId"
+                           :label="dept.name"
+                           :value="dept.deptId">
+                   </el-option>
+               </el-select>
+           </el-form-item>
+           <el-form-item label="备注">
+               <el-input v-model="form.remark"></el-input>
+           </el-form-item>
+
+        <el-form-item>
+            <el-button type="primary" @click="onSubmit">立即创建</el-button>
+            <el-button>取消</el-button>
+        </el-form-item>
+        </el-form>
+    </div>
+<script>
+
+    var vm = new Vue({
+        el: '#mapp',
+        data:{
+            u:{},
+            deptList:[],
+            getUrl:'../api/role/save',
+            src:"${request.contextPath}/statics/img/bg.jpg",
+            defaultSrc:"https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png",
+            currentDate: new Date(),
+            form: {
+            }
+        },
+        methods: {
+            init(){
+                this.form={
+                    roleName: '',
+                    deptName:'',
+                    remark: '',
+                    deptId:"",
+                }
+            },
+            getDataList(){
+                let _this=this;
+                $.get("../api/dept/select",function (data) {
+                    if(data.code==0){
+                        _this.deptList=data.deptList;
+                    }
+                });
+            },
+            onSubmit() {
+                let _this=this;
+                $.ajax({
+                    type: "POST",
+                    url: _this.getUrl,
+                    contentType: "application/json",
+                    data: JSON.stringify(vm.form),
+                    success: function(r){
+                        if(r.code === 0){
+                            _this.$message('操作成功');
+                            _this.init();
+                        }else{
+                            _this.$message(r.msg);
+                    }
+                    }
+                });
+            }
+        },
+        created(){
+            if($("#role").val()==0){
+                this.init();
+            }else{
+                var a=($("#role").val()).replace(/'/g,"\"");
+                this.u= JSON.parse(a);
+                this.form=this.u;
+                this.getUrl='../api/role/update';
+            }
+            this.getDataList();
+        }
+    })
+</script>
+</body>
+</html>

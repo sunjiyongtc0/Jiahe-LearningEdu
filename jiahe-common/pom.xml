@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>sjy.jiahe</groupId>
+        <artifactId>jiahe-learningedu</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>jiahe-common</artifactId>
+    <packaging>jar</packaging>
+    <description>jiahe-common</description>
+
+    <properties>
+        <druid.version>1.0.28</druid.version>
+        <druid0.version>1.1.13</druid0.version>
+    </properties>
+    <dependencies>
+        <!--<dependency>-->
+        <!--<groupId>javax.validation</groupId>-->
+        <!--<artifactId>validation-api</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>javax.validation</groupId>-->
+            <!--<artifactId>validation-api</artifactId>-->
+            <!--<version>2.0.1.Final</version>-->
+        <!--</dependency>-->
+
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+
+    </dependencies>
+
+
+
+</project>

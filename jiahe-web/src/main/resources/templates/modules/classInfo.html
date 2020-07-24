@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<#include "/header.html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<style>
+
+</style>
+<body>
+<div id="mapp">
+    <div align="center">
+        <h2>精品课程</h2>
+        <el-image :src="defaultSrc">
+            <div slot="placeholder" class="image-slot">
+                加载中<span class="dot">...</span>
+            </div>
+        </el-image>
+    </div>
+    <span>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</span>
+    <el-collapse v-model="activeNames"  accordion>
+        <el-collapse-item title="课程信息" name="1">
+            <div><b>课时 :</b> 40 </div>
+            <div><b>费用 :</b> 80/小时 </div>
+        </el-collapse-item>
+        <el-collapse-item title="任课教师" name="2">
+            <div>大威天龙</div>
+        </el-collapse-item>
+        <el-collapse-item title="火热报名中。。。" name="3">
+            <el-button type="success" round>立即报名</el-button>
+        </el-collapse-item>
+    </el-collapse>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#mapp',
+        data:{
+            defaultSrc:"https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png",
+            currentDate: new Date(),
+            activeNames:['1'],
+
+        },
+        methods: {
+            init(){
+
+            },
+
+        },
+        mounted() {
+
+        },
+        created(){
+           this.init();
+
+        }
+    })
+</script>
+</body>
+</html>

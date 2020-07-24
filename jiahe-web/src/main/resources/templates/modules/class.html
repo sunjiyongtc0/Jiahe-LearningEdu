@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<#include "/header.html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<style>
+    .time {
+        font-size: 13px;
+        color: #999;
+    }
+
+    .bottom {
+        margin-top: 13px;
+        line-height: 12px;
+    }
+
+    .button {
+        padding: 0;
+        float: right;
+    }
+
+    .image {
+        width: 100%;
+        display: block;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        display: table;
+        content: "";
+    }
+
+    .clearfix:after {
+        clear: both
+    }
+</style>
+<body>
+    <div id="mapp">
+        <el-row :gutter="20">
+            <el-col  :span="10"  v-for="(o, index) in 12" :key="o" :offset="index >= 0 ? 2 : 0">
+                <el-card :body-style="{ padding: '0px' }"  >
+                    <img :src="defaultSrc" class="image">
+                    <div style="padding: 14px;">
+                        <span>精品课程</span>
+                        <div class="bottom clearfix">
+                            <time class="time">{{ currentDate }}</time>
+                            <el-button type="text" class="button" @click="openDrawer(o)">详情信息</el-button>
+                        </div>
+                    </div>
+                </el-card>
+            </el-col>
+        </el-row>
+        <el-drawer
+                :title="drawerTitle"
+                :visible.sync="drawer"
+                :with-header="false"
+                wrapperClosable="true"
+                :opened="opend()"
+                :before-close="handleClose"
+                 size="60%"   >
+            <iframe  id="mainIframe" ref="mainIframe" name="mainIframe"  width="100%" height="100%" :src="index"></iframe>
+        </el-drawer>
+
+    </div>
+<script>
+    // var pathName = document.location.href;
+    // console.log(pathName)
+    var vm = new Vue({
+        el: '#mapp',
+        data:{
+            src:"${request.contextPath}/statics/img/bg.jpg",
+            defaultSrc:"https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png",
+            currentDate: new Date(),
+            drawer: false,
+            drawerTitle:"精品课程",
+            index:"classinfo.html",
+        },
+        methods:{
+            openDrawer(val){
+                this.drawer=true;
+                this.drawerTitle="精品"+val+"课程";
+            },
+            opend(){
+
+            },
+            handleClose(){
+                console.log("closed");
+                this.drawer=false;
+            }
+        }
+    })
+</script>
+</body>
+</html>

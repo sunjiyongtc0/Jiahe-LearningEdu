@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<#include "/header.html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<style>
+    .time {
+        font-size: 13px;
+        color: #999;
+    }
+
+    .bottom {
+        margin-top: 13px;
+        line-height: 12px;
+    }
+
+    .button {
+        padding: 0;
+        float: right;
+    }
+
+    .image {
+        width: 440px;
+        height: 530px;
+        display: block;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        display: table;
+        content: "";
+    }
+
+    .clearfix:after {
+        clear: both
+    }
+</style>
+<body>
+    <div id="mapp">
+        <el-row :gutter="20">
+            <el-col  style="padding:10px 0px 10px 0px" :span="10"  v-for="(o, index) in 9" :key="o" :offset="index >= 0 ? 2 : 0" >
+                <el-card :body-style="{ padding: '10px 0px 10px 0px'}" shadow="hover">
+                    <el-image :src="src+(o%6)+'.jpg'" class="image" fit="fill"></el-image>
+                    <div style="padding: 8px;">
+                        <span>精英教师</span>
+                        <div class="bottom clearfix">
+                            <span>课程名称 </span>
+                            <el-button type="text" class="button">教师信息</el-button>
+                        </div>
+                    </div>
+                </el-card>
+            </el-col>
+        </el-row>
+    </div>
+<script>
+    // var pathName = document.location.href;
+    // console.log(pathName)
+    var vm = new Vue({
+        el: '#mapp',
+        data:{
+            src:"${request.contextPath}/statics/img/teacher/",
+            defaultSrc:"http://www.jiepai.net/wp-content/uploads/2020/04/1098fe54559588.jpg",
+            currentDate: new Date(),
+        },
+    })
+</script>
+</body>
+</html>

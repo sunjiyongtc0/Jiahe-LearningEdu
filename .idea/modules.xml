@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/JiaHe-LearningEdu.iml" filepath="$PROJECT_DIR$/.idea/JiaHe-LearningEdu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jiahe-api/jiahe-api.iml" filepath="$PROJECT_DIR$/jiahe-api/jiahe-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jiahe-common/jiahe-common.iml" filepath="$PROJECT_DIR$/jiahe-common/jiahe-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jiahe-web/jiahe-learningedu.iml" filepath="$PROJECT_DIR$/jiahe-web/jiahe-learningedu.iml" />
+    </modules>
+  </component>
+</project>

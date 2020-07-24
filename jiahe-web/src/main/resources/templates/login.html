@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<#include "/header.html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+
+<style>
+    .el-row {
+        margin-bottom: 20px;
+    &:last-child {
+         margin-bottom: 0;
+     }
+    }
+    .el-col {
+        border-radius: 4px;
+    }
+
+    .grid-content {
+        border-radius: 4px;
+        min-height: 36px;
+    }
+    .row-bg {
+        padding: 10px 0;
+    }
+</style>
+<body>
+<div id="app"  style="height: 580px;width:100%;" >
+    <div    style="height: 100%;width:100%;background-image: url('${request.contextPath}/statics/img/bg.jpg');background-repeat: no-repeat ;background-size: cover;">
+        <el-row ></el-row>
+        <el-row ></el-row>
+        <el-row :gutter="20">
+            <el-col :span="12" :offset="6" style="background: rgba(159, 159, 159, 0.23); border: 0px solid rgb(221, 222, 225);">
+                <el-row ></el-row>
+                <el-row ></el-row>
+                <el-row :gutter="20">
+                    <el-col :span="12" :offset="6"><div class="grid-content bg-purple" align="center"><b style="color: #ffffff">佳禾教育</b></div></el-col>
+                </el-row>
+                <el-row :gutter="20">
+                    <el-col :span="4" :offset="6"><div class="grid-content bg-purple" align="center"><b style="color: #ffffff">用户名</b></div></el-col>
+                    <el-col :span="8" ><div class="grid-content bg-purple" align="left"> <el-input v-model="username" placeholder="请输入用户名"></el-input></div></el-col>
+                </el-row>
+                <el-row :gutter="20">
+                    <el-col :span="4" :offset="6"><div class="grid-content bg-purple" align="center"><b style="color: #ffffff">密码</b></div></el-col>
+                    <el-col :span="8" ><div class="grid-content bg-purple" align="left"><el-input placeholder="请输入密码" v-model="password" show-password></el-input></div></el-col>
+                </el-row>
+                <el-row :gutter="20">
+                    <el-col :span="4" :offset="6"><div class="grid-content bg-purple" align="center"><b style="color: #ffffff">验证码</b></div></el-col>
+                    <el-col :span="8" ><div class="grid-content bg-purple" align="left"> <el-input v-model="captcha" placeholder="请输入验证码"></el-input></div></el-col>
+                </el-row>
+                <el-row :gutter="20">
+                    <el-col :span="8" :offset="10">
+                        <img alt="如果看不清楚，请单击图片刷新！" class="pointer" :src="src" @click="refreshCode">
+                    </el-col>
+                </el-row>
+                <el-row :gutter="20">
+                    <el-col :span="4" :offset="6"><div class="grid-content bg-purple" align="center"><el-button type="primary" @click="login(0)">登录系统</el-button></div></el-col>
+                    <el-col :span="4" ><div class="grid-content bg-purple" align="center"><el-button type="success">注册用户</el-button></div></el-col>
+                    <el-col :span="4" ><div class="grid-content bg-purple" align="center"><el-button type="info" @click="login(1)">游客登录</el-button></div></el-col>
+                </el-row>
+                <el-row ></el-row>
+                <el-row ></el-row>
+            </el-col>
+        </el-row>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+   var vm = new Vue({
+        el:'#app',
+        data:{
+            username: '',
+            password: '',
+            captcha: '',
+            src: 'captcha.jpg'
+        },
+        beforeCreate: function(){
+           if(self != top){
+               top.location.href = self.location.href;
+           }
+        },
+        methods: {
+            refreshCode: function(){
+                this.src = "captcha.jpg?t=" + $.now();
+            },
+            login: function (type) {
+                var _this=this;
+                var data = "username="+vm.username+"&password="+vm.password+"&captcha="+vm.captcha+"&type="+type;
+                $.ajax({
+                    type: "POST",
+                    url: "loginto",
+                    data: data,
+                    dataType: "json",
+                    success: function(result){
+                        if(result.code == 0){//登录成功
+                            parent.location.href ='index.html';
+                        }else{
+                            _this.$message({
+                                showClose: true,
+                                message: result.msg,
+                                type: 'error'
+                            });
+                            vm.refreshCode();
+                        }
+                    }
+                });
+            }
+        },
+        mount:{
+
+        }
+    });
+
+</script>
+</body>
+</html>
