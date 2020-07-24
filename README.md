@@ -10,4 +10,4 @@
   hikari 连接池<br>
   quartz-scheduler 定时任务<br>
   swagger2 文档工具<br>
-  shiro 安全主件<br>
+  shiro 安全组件<br>
