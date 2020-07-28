@@ -2,12 +2,18 @@
 # 佳禾教育程序
 ### 所用技术
 ##### 前端 
-  vue.js <br>
-  elementUI  <br>
-  百度 echarts  <br>
+- 前端框架：vue.js
+- 前端Ui: elementUI
+- 图形组件：百度 echarts
 ##### 后端
-  spring boot 2.3 <br>
-  hikari 连接池<br>
-  quartz-scheduler 定时任务<br>
-  swagger2 文档工具<br>
-  shiro 安全组件<br>
+- 核心框架：Spring Boot 2.3
+- 数据连接池：hikari
+- 定时器：Quartz 2.3
+- 安全框架：Apache Shiro 1.4
+- 视图框架：Spring MVC 5.0
+- 持久层框架：MyBatis 3.5
+- 文档工具：swagger2
+##### 软件
+- JDK1.8
+- MySQL5.7
+- Maven3.5
