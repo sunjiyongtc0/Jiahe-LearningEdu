@@ -76,4 +76,13 @@ public class userController   extends BaseController {
     }
 
 
+  /**
+   * 根据id获取用户
+   * */
+  @PostMapping("/finduser/{id}")
+  public  Res finduser(@PathVariable("id") long id){
+      SysUserEntity u=user.getById(id);
+      return Res.ok().put("user",u);
+  }
+
 }

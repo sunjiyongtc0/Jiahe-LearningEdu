@@ -1,0 +1,21 @@
+<!--miniprogram/pages/payment/payment.wxml-->
+<van-collapse accordion value="{{ activeName }}" bind:change="onChange" wx:for="{{7}}"  wx:for-item="index" >
+  <van-collapse-item title="精品课程{{index}}" name="{{index+1}}">
+  <van-row gutter="20">
+    <van-col  span="6"> 地址：</van-col>
+    <van-col  span="18">{{paymanu.address}} </van-col>
+  </van-row>
+  <van-row gutter="20">
+    <van-col  span="6"> 下单时间：</van-col>
+    <van-col  span="18"> {{paymanu.date}}</van-col>
+  </van-row>  
+  <van-row gutter="20">
+    <van-col  span="6"> 报名城市：</van-col>
+    <van-col  span="18"> {{paymanu.city}}</van-col>
+  </van-row> 
+    <van-row gutter="20">
+    <van-col  span="6"> 邮编：</van-col>
+    <van-col  span="18"> {{paymanu.zip}}</van-col>
+  </van-row> 
+  </van-collapse-item>
+</van-collapse>

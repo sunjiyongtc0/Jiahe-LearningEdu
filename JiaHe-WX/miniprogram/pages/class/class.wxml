@@ -1,0 +1,11 @@
+<!--class.wxml-->
+<van-row wx:for="{{14}}" wx:for-item="index"> 
+  <van-card 
+    tag="{{index%3==0?'热门':'火热'}}"
+    price="{{index%3==0?160:210}}"
+    desc="{{index%5==0?'部分课程已满员':index%3==1?'教师资源成熟':'教学反省良好'}}"
+    title="精品课程{{index}}"
+    thumb="{{ imageURL }}"
+  >
+  </van-card>
+</van-row>

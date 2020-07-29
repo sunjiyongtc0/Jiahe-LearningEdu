@@ -1,0 +1,43 @@
+<!--miniprogram/pages/User/userinfo/userinfo.wxml-->
+<van-cell-group>
+  <van-field
+    value="{{ userInfo.username }}"
+    label="用户名"
+    left-icon="user-o"
+    disabled
+    border="{{ false }}"
+  />
+</van-cell-group>
+<van-cell-group>
+  <van-field
+    value="{{ userInfo.email }}"
+    label="邮箱"
+    left-icon="envelop-o"
+    border="{{ false }}"
+  />
+</van-cell-group>
+<van-cell-group>
+  <van-field
+    value="{{ userInfo.mobile }}"
+    label="手机号"
+    left-icon="phone-o"
+  />
+</van-cell-group>
+
+<van-cell-group>
+  <van-field
+    value="{{ userInfo.createTime }}"
+    label="创建时间"
+      disabled
+    left-icon="clock-o"
+  />
+</van-cell-group>
+
+<van-cell-group>
+  <van-field
+    value="{{ userInfo.deptName }}"
+    label="所在部门"
+    left-icon="shop-o"
+      disabled
+  />
+</van-cell-group>

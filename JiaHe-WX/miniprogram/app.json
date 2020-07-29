@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/class/class",
+    "pages/teacher/teacher",
+    "pages/payment/payment",
+    "pages/info/info",
+    "pages/User/userlist/userlist",
+    "pages/User/userinfo/userinfo"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ccec6c",
+    "navigationBarTitleText": "佳禾教育",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "backgroundColor": "#ccec6c",
+    "selectedColor": "#blue",
+    "color": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/class/class",
+        "text": "课程"
+      },
+      {
+        "pagePath": "pages/teacher/teacher",
+        "text": "教师"
+      },
+      {
+        "pagePath": "pages/payment/payment",
+        "text": "选课"
+      },
+      {
+        "pagePath": "pages/info/info",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
