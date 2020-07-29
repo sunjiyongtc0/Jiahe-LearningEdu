@@ -17,3 +17,5 @@
 - JDK1.8
 - MySQL5.7
 - Maven3.5
+##### 微信小程序关联
+- UI框架 vant-weapp
