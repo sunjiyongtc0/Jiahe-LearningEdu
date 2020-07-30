@@ -1,0 +1,20 @@
+<!--miniprogram/pages/User/loginauth/loginauth.wxml-->
+<van-row   class="mintop">
+</van-row>
+<van-row   class="mintop">
+<van-col offset="8" span="8"> 欢迎您 </van-col>
+</van-row>
+<van-row   class="min">
+<van-col offset="4" span="16"> 申请获得以下权限 </van-col>
+</van-row>
+<van-row  class="min" >
+<van-col offset="4" span="16">  获得你的公开信息（昵称、头像等） </van-col>
+</van-row>
+<van-row   class="mintop">
+</van-row>
+<van-row  class="minbotton" >
+<van-col offset="8" span="4">  <van-button type="primary" size="small" bind:click="sync">同步登录</van-button> </van-col>
+</van-row>
+<van-row  class="minbotton" >
+<van-col offset="8" span="4">  <van-button type="primary" size="small" bind:click="loginout">退出登录</van-button> </van-col>
+</van-row>

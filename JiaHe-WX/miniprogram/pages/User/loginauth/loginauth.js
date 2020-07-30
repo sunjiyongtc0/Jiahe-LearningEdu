@@ -1,31 +1,17 @@
-// miniprogram/pages/User/userinfo/userinfo.js
-
-const api = require('../../../config/api.js');
-const util = require('../../../config/util.js');
+// miniprogram/pages/User/loginauth/loginauth.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo:{}
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _this=this;
-    console.log(options);//     var userId=options.id; 可以打印一下option看查看参数
-    var userId=wx.getStorageSync('userId');
-
-    util.request(api.findUser+userId).then(function (res) {
-      if (res.code === 0) {
-        _this.data.userInfo = res.user
-        _this.setData( _this.data);
-      }
-    });
-
 
   },
 
@@ -76,5 +62,18 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  sync:function(){
+    //存储用户信息
+    wx.setStorageSync('userId', 1);
+    wx.navigateBack({
+      delta: 2,
+      });//返回上一页面
+  },
+  loginout:function(){
+    wx.setStorageSync('userId', null);
+    wx.navigateBack({
+      delta: 2,
+      });//返回上一页面
   }
 })

@@ -1,31 +1,20 @@
-// miniprogram/pages/User/userinfo/userinfo.js
-
-const api = require('../../../config/api.js');
-const util = require('../../../config/util.js');
+// miniprogram/pages/User/userrelation/userrelation.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo:{}
+  username:"",
+  emsg:"手机号格式错误",
+  phone: "",
+  errormsg: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _this=this;
-    console.log(options);//     var userId=options.id; 可以打印一下option看查看参数
-    var userId=wx.getStorageSync('userId');
-
-    util.request(api.findUser+userId).then(function (res) {
-      if (res.code === 0) {
-        _this.data.userInfo = res.user
-        _this.setData( _this.data);
-      }
-    });
-
 
   },
 
@@ -76,5 +65,22 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  usernameBlur: function(e){
+    var inputname=e.detail.value;
+    this.data.username=inputname;
+    this.setData(this.data);
+  },
+  phoneBlur: function(e){
+    var inputphone=e.detail.value;
+    var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+            if (myreg.test(inputphone)) {
+              this.data.errormsg="";
+              this.data.phone=inputphone;
+              this.setData(this.data)
+            } else {
+               this.data.errormsg=this.data.emsg
+               this.setData(this.data)
+            }
   }
 })

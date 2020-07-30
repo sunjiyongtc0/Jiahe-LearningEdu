@@ -1,11 +1,12 @@
 <!--miniprogram/pages/info/info.wxml-->
-<view class="container">
+<view class="container" bindtap="btnAuth" >
      <button  indicator-dots="true" autoplay="true" interval="3000" duration="1000"
            class="userinfo-avatar banner"
            style="background-image: url({{avatarUrl}})"
            size="default"
            ></button>
-            <view class="flex-item flex-item-V demo-text-2">欢迎使用</view>
+             <view class="flex-item flex-item-V demo-text-2">{{userInfo.nickName}}</view>
+            <view class="flex-item flex-item-V demo-text-2">{{userMsg}}</view>
  </view>
 <van-grid column-num="3" gutter="{{ 10 }}" border="{{true}}"  square="{{true}}">
   <van-grid-item  icon="manager-o" text="个人信息"  link-type="navigateTo" url="/pages/User/userinfo/userinfo?id=1"/>
@@ -13,7 +14,7 @@
   <van-grid-item icon="star-o" text="我的收藏" />
   <van-grid-item icon="photo-o" text="文字" />
     <van-grid-item icon="photo-o" text="文字" />
-  <van-grid-item icon="phone-o" text="绑定手机" />
+  <van-grid-item icon="phone-o" text="绑定手机" link-type="navigateTo" url="/pages/User/userrelation/userrelation" />
   <van-grid-item icon="question-o" text="帮助中心" />
   <van-grid-item icon="info-o" text="系统信息" />
   <van-grid-item icon="comment-o" text="意见反馈" />

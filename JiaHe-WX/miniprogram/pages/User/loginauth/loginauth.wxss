@@ -1,0 +1,12 @@
+/* miniprogram/pages/User/loginauth/loginauth.wxss */
+.min{
+  text-align: center;
+}
+.mintop{
+  text-align: center;
+  top: 80px;
+}
+.minbotton{
+    text-align: center;
+  bottom: 80px;
+}

@@ -9,13 +9,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    avatarUrl: './user-unlogin.png',
-    userInfo: {},
-    logged: false,
-    takeSession: false,
-    requestResult: '',
-    show:false,
-    value: 25,
+    avatarUrl: '../index/user-unlogin.png',
+    userInfo: {
+      nickName:'游客'
+    },
+    userMsg:"未登录",
     gradientColor: {
       '0%': '#ffd01e',
       '100%': '#ee0a24',
@@ -27,6 +25,13 @@ Page({
    */
   onLoad: function (options) {
     this.getIndexData();
+    var user=wx.getStorageSync('userId');
+    console.log(user)
+    if(user!=null&&user!=""){
+      this.setData({
+        userMsg: "欢迎访问",
+      })
+    }
   },
 
   /**
@@ -86,6 +91,7 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
+              console.log(res)
               this.setData({
                 avatarUrl: res.userInfo.avatarUrl,
                 userInfo: res.userInfo
@@ -112,18 +118,25 @@ Page({
     //   } 
     // })     
   },
-  userList: function(){
-    // wx.navigateTo({
-    //   url:'../User/userlist/userlist',//跳转页面的路径，可带参数？隔开，不同参数用 & 分隔；相对路径，不需要.wxml后缀
-    //   success:function(){
-    //     //成功后的回调；  
-    //   },        
-    //   fail:function(){
-    //     //失败后的回调；
-    //   },          
-    //   complete:function(){
-    //     //结束后的回调(成功，失败都会执行)
-    //   }      
-    // })
+  userlogin: function(){
+    wx.navigateTo({
+      url:'../User/loginauth/loginauth',//跳转页面的路径，可带参数？隔开，不同参数用 & 分隔；相对路径，不需要.wxml后缀
+      success:function(){
+        //成功后的回调；  
+      },        
+      fail:function(){
+        //失败后的回调；
+      },          
+      complete:function(){
+        //结束后的回调(成功，失败都会执行)
+      }      
+    })
+  },
+  btnAuth: function(){
+   if(this.userMsg=="欢迎访问"){
+     console.log("欢迎访问")
+   }else{
+    this.userlogin();
+   }
   }
 })
