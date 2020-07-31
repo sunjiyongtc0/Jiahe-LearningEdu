@@ -64,6 +64,15 @@ Page({
 
   },
   sync:function(){
+    wx.login({
+      success: res => {
+        console.log(res)
+      }
+    })
+
+
+
+
     //存储用户信息
     wx.setStorageSync('userId', 1);
     wx.navigateBack({

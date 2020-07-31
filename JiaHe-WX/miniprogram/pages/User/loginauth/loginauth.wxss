@@ -1,12 +1,13 @@
 /* miniprogram/pages/User/loginauth/loginauth.wxss */
 .min{
   text-align: center;
+  height: 20px;
 }
 .mintop{
   text-align: center;
-  top: 80px;
+  height: 60px;
 }
 .minbotton{
-    text-align: center;
-  bottom: 80px;
+  text-align: center;
+  height: 80px;
 }

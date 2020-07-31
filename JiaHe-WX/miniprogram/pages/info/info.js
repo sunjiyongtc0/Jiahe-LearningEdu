@@ -25,13 +25,6 @@ Page({
    */
   onLoad: function (options) {
     this.getIndexData();
-    var user=wx.getStorageSync('userId');
-    console.log(user)
-    if(user!=null&&user!=""){
-      this.setData({
-        userMsg: "欢迎访问",
-      })
-    }
   },
 
   /**
@@ -45,7 +38,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var user=wx.getStorageSync('userId');
+    console.log("onShow"+user)
+    if(user!=null&&user!=""){
+      this.setData({
+        userMsg: "欢迎访问",
+      })
+    }else{
+      this.setData({
+        userMsg: "未登录",
+      })
+    }
   },
 
   /**
