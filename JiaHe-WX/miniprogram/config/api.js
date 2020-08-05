@@ -4,4 +4,6 @@ module.exports = {
   userList: API_BASE_URL + 'user/list', //用户列表
   findUser: API_BASE_URL + 'user/finduser/', //获取用户
   IndexUrlBanner: API_BASE_URL + 't2', //首页banner
+  WxSync: API_BASE_URL+'vx/loginUser/',
+  WxRelation: API_BASE_URL+'vx/relationUser'
 }

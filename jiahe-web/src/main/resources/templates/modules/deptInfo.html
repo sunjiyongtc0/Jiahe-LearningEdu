@@ -58,7 +58,7 @@
                 $.ajax({
                     type: "POST",
                     url: _this.getUrl,
-                    contentType: "application/json",
+                    contentType: "application/json;charset=UTF-8",
                     data: JSON.stringify(vm.form),
                     success: function(r){
                         if(r.code === 0){

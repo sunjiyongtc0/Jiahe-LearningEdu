@@ -67,8 +67,9 @@ mybatis-plus:
     jdbc-type-for-null: 'null'
 
 #小程序ID
-wx.appId: wx7cc5ee31f6e313e7
+wx:
+  appId: wx7cc5ee31f6e313e7
 #小程序密钥
-wx.secret: d72c5783284ee771e7175087264065cf
+  secret: d72c5783284ee771e7175087264065cf
 #获取Web_access_tokenhttps的请求地址
-wx.webAccessTokenhttps: https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code
+  webAccessTokenhttps: https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code

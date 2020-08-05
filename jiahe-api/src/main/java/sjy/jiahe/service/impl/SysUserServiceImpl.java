@@ -93,6 +93,15 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 		//保存用户与角色关系
 		sysUserRoleService.saveOrUpdate(user.getUserId(), user.getRoleIdList());
 	}
+
+
+	public  SysUserEntity  wxSync(String openId){
+	 return 	baseMapper.wxSync(openId);
+	}
+
+
+
+
 //
 //
 //	@Override

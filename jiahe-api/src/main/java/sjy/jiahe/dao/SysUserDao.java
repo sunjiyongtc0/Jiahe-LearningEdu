@@ -25,4 +25,9 @@ public interface SysUserDao extends BaseMapper<SysUserEntity> {
 	 */
 	List<Long> queryAllMenuId(Long userId);
 
+
+	/**
+	 * 将微信openid与用户关联
+	 * */
+	SysUserEntity wxSync(String openId);
 }

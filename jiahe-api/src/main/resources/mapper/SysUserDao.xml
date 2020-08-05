@@ -18,4 +18,10 @@
 		where ur.user_id = #{userId}
 	</select>
 
+	<select id="wxSync" resultType="sjy.jiahe.entity.SysUserEntity">
+		select u.* from sys_user  u inner join sys_wx_user w
+		on w.user_id=u.user_id where w.open_id=#{openId} AND w.flag_id=0
+	</select>
+
+
 </mapper>

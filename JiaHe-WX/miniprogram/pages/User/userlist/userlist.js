@@ -21,7 +21,6 @@ Page({
       if (res.code === 0) {
         _this.data.userList = res.page.list;
         _this.setData( _this.data);
-        console.log( _this.data)
       }
     });
   },

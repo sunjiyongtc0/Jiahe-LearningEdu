@@ -31,6 +31,12 @@ public interface SysUserService extends IService<SysUserEntity> {
 	 * 修改用户
 	 */
 	void update(SysUserEntity user);
+
+
+	SysUserEntity wxSync(String openId);
+
+
+
 //
 //	/**
 //	 * 修改密码

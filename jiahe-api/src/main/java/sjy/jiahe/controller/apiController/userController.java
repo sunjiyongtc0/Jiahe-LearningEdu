@@ -1,6 +1,7 @@
 package sjy.jiahe.controller.apiController;
 
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sjy.jiahe.annotation.SysLog;
@@ -18,10 +19,10 @@ import java.util.Map;
 public class userController   extends BaseController {
 
     @Autowired
-    private SysUserService  user;
+    private SysUserService user;
 
     @GetMapping("/t")
-    public List<Long> t(){
+    public List<Long> t() {
         return user.queryAllMenuId(1l);
     }
 
@@ -30,7 +31,7 @@ public class userController   extends BaseController {
      */
     @RequestMapping("/list")
 //    @RequiresPermissions("sys:user:list")
-    public Res list(@RequestParam Map<String, Object> params){
+    public Res list(@RequestParam Map<String, Object> params) {
         PageUtils page = user.queryPage(params);
         return Res.ok().put("page", page);
     }
@@ -41,8 +42,8 @@ public class userController   extends BaseController {
     @SysLog("保存用户")
 //    @RequestMapping("/save")
 //    @RequiresPermissions("sys:user:save")
-    @PostMapping(value="/save",produces = "application/json;charset=UTF-8")
-    public Res save(@RequestBody SysUserEntity userEntity){
+    @PostMapping(value = "/save", produces = "application/json;charset=UTF-8")
+    public Res save(@RequestBody SysUserEntity userEntity) {
 //        ValidatorUtils.validateEntity(userEntity, AddGroup.class);
         user.saveUser(userEntity);
         return Res.ok();
@@ -54,7 +55,7 @@ public class userController   extends BaseController {
     @SysLog("修改用户")
     @RequestMapping("/update")
 //    @RequiresPermissions("sys:user:update")
-    public Res update(@RequestBody SysUserEntity userEntity){
+    public Res update(@RequestBody SysUserEntity userEntity) {
 //        ValidatorUtils.validateEntity(user, UpdateGroup.class);
         user.update(userEntity);
 
@@ -62,27 +63,24 @@ public class userController   extends BaseController {
     }
 
 
-
-/**
- *
- * 删除
- * */
+    /**
+     * 删除
+     */
     @SysLog("删除用户")
     @DeleteMapping("/del/{id}")
-    public  Res del(@PathVariable("id") long id){
+    public Res del(@PathVariable("id") long id) {
         System.out.println(id);
         user.removeById(id);
         return Res.ok();
     }
 
 
-  /**
-   * 根据id获取用户
-   * */
-  @PostMapping("/finduser/{id}")
-  public  Res finduser(@PathVariable("id") long id){
-      SysUserEntity u=user.getById(id);
-      return Res.ok().put("user",u);
-  }
-
+    /**
+     * 根据id获取用户
+     */
+    @PostMapping("/finduser/{id}")
+    public Res finduser(@PathVariable("id") long id) {
+        SysUserEntity u = user.getById(id);
+        return Res.ok().put("user", u);
+    }
 }

@@ -94,7 +94,7 @@
                 $.ajax({
                     type: "DELETE",
                     url:  "api/log/del/"+row.id,
-                    contentType: "application/json",
+                    contentType: "application/json;charset=UTF-8",
                     success: function(r){
                         if(r.code == 0){
                             _this.init();

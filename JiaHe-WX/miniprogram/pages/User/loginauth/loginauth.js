@@ -1,4 +1,8 @@
 // miniprogram/pages/User/loginauth/loginauth.js
+
+const api = require('../../../config/api.js');
+const util = require('../../../config/util.js');
+
 Page({
 
   /**
@@ -66,21 +70,24 @@ Page({
   sync:function(){
     wx.login({
       success: res => {
-        console.log(res)
+        if(res.errMsg=="login:ok"){
+          var code=res.code;
+          util.request(api.WxSync+code).then(function (res) {
+            if (res.code === 0) {
+                 //存储用户信息
+            wx.setStorageSync('user',res.user);
+            wx.navigateBack();//返回上一页面
+          }
+        });
       }
-    })
-
-
-
-
-    //存储用户信息
-    wx.setStorageSync('userId', 1);
-    wx.navigateBack({
-      delta: 2,
-      });//返回上一页面
-  },
+    }
+  });
+  wx.navigateBack({
+    delta: 2,
+    });//返回上一页面
+ },
   loginout:function(){
-    wx.setStorageSync('userId', null);
+    wx.setStorageSync('user', null);
     wx.navigateBack({
       delta: 2,
       });//返回上一页面

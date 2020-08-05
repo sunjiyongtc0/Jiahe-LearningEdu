@@ -38,11 +38,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var user=wx.getStorageSync('userId');
-    console.log("onShow"+user)
+    var _this=this;
+    var user=wx.getStorageSync('user');
+    console.log(user)
     if(user!=null&&user!=""){
       this.setData({
-        userMsg: "欢迎访问",
+        userMsg: user.username,
       })
     }else{
       this.setData({

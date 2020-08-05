@@ -17,9 +17,9 @@ Page({
   onLoad: function (options) {
     var _this=this;
     console.log(options);//     var userId=options.id; 可以打印一下option看查看参数
-    var userId=wx.getStorageSync('userId');
-
-    util.request(api.findUser+userId).then(function (res) {
+    var user=wx.getStorageSync('user');
+    console.log(user.userId)
+    util.request(api.findUser+user.userId).then(function (res) {
       if (res.code === 0) {
         _this.data.userInfo = res.user
         _this.setData( _this.data);

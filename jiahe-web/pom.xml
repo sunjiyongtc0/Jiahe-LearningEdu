@@ -22,13 +22,13 @@
             <groupId>sjy.jiahe</groupId>
             <artifactId>jiahe-common</artifactId>
             <version>1.0.0</version>
-           <!-- <scope>compile</scope>-->
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>sjy.jiahe</groupId>
             <artifactId>jiahe-api</artifactId>
             <version>1.0.0</version>
-           <!-- <scope>compile</scope>-->
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
