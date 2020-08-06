@@ -40,7 +40,6 @@ Page({
   onShow: function () {
     var _this=this;
     var user=wx.getStorageSync('user');
-    console.log(user)
     if(user!=null&&user!=""){
       this.setData({
         userMsg: user.username,
@@ -95,7 +94,7 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              console.log(res)
+              // console.log(res)
               this.setData({
                 avatarUrl: res.userInfo.avatarUrl,
                 userInfo: res.userInfo

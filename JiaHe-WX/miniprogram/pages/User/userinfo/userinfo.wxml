@@ -41,3 +41,5 @@
       disabled
   />
 </van-cell-group>
+
+<van-toast id="van-toast"/>

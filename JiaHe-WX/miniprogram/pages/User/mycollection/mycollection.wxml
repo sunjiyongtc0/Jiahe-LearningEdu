@@ -1,0 +1,3 @@
+<!--miniprogram/pages/User/mycollection/mycollection.wxml-->
+<van-uploader file-list="{{ fileList }}" bind:after-read="readIMG" bind:delete="delIMG" />
+<van-toast id="van-toast"  />

@@ -20,7 +20,7 @@ public class vxconfigController extends BaseController {
     @Autowired
     SysUserService  sysUserService;
 
-
+    //用户登录同步，指向userid与openid关联；
     @PostMapping("/loginUser/{logincode}")
     @ResponseBody
     public Res loginUser(@PathVariable("logincode") String  logincode){
@@ -38,7 +38,7 @@ public class vxconfigController extends BaseController {
         }
 
     }
-
+    //注册微信用户信息同步；数据库如果username&mobile相同这userID与openid 关联在sys_wx_user表中
     @RequestMapping(value="/relationUser",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public Res relationUser(@RequestBody JSONObject params){

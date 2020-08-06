@@ -129,6 +129,7 @@ module.exports = {
     checkSession,
     login,
     requestJson,
+    fileUpload,
 }
 
 
@@ -171,3 +172,29 @@ function requestJson(url, data = {}, method = "POST", header = "application/json
     });
 }
 
+/**
+ * 封封微信的的request
+ */
+function fileUpload(url, data, method = "",) {
+    wx.showLoading({
+        title: '上传中...',
+    });
+    return new Promise(function (resolve, reject) {
+        wx.uploadFile({
+            filePath: data.path,
+            name: 'file',
+            url: url,
+            success: function (res) {
+                wx.hideLoading();
+                if (res.statusCode == 200) {
+                    resolve(JSON.parse(res.data));
+                }else{
+                    reject(res.errMsg);
+                }
+            },
+            fail: function (err) {
+                reject(err)
+            }
+          });
+    }).catch((e) => {});
+}

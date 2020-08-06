@@ -2,6 +2,7 @@
 
 const api = require('../../../config/api.js');
 const util = require('../../../config/util.js');
+import Toast from '../../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -15,16 +16,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _this=this;
+
     console.log(options);//     var userId=options.id; 可以打印一下option看查看参数
-    var user=wx.getStorageSync('user');
-    console.log(user.userId)
-    util.request(api.findUser+user.userId).then(function (res) {
-      if (res.code === 0) {
-        _this.data.userInfo = res.user
-        _this.setData( _this.data);
-      }
-    });
+   
 
 
   },
@@ -40,7 +34,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var _this=this;
+    var user=wx.getStorageSync('user');
+    if(user==null||user==""){
+      Toast({
+        type: 'fail',
+        message: '用户请先登录',
+        onClose: () => {
+          wx.navigateBack();//返回上一页面
+        },
+      });
+    }else{
+      util.request(api.findUser+user.userId).then(function (res) {
+        if (res.code === 0) {
+          _this.data.userInfo = res.user
+          _this.setData( _this.data);
+        }
+      });
+  }
   },
 
   /**

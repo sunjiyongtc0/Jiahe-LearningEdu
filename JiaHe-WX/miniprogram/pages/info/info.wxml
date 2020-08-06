@@ -11,7 +11,7 @@
 <van-grid column-num="3" gutter="{{ 10 }}" border="{{true}}"  square="{{true}}">
   <van-grid-item  icon="manager-o" text="个人信息"  link-type="navigateTo" url="/pages/User/userinfo/userinfo?id=1"/>
   <van-grid-item icon="friends-o" text="用户管理"  link-type="navigateTo" url="/pages/User/userlist/userlist"/>
-  <van-grid-item icon="star-o" text="我的收藏" />
+  <van-grid-item icon="star-o" text="我的收藏" link-type="navigateTo" url="/pages/User/mycollection/mycollection" />
   <van-grid-item icon="photo-o" text="文字" />
     <van-grid-item icon="photo-o" text="文字" />
   <van-grid-item icon="phone-o" text="绑定手机" link-type="navigateTo" url="/pages/User/userrelation/userrelation" />
