@@ -37,9 +37,15 @@ Page({
       var _this=this;
       util.request(api.getImgList+user.userId).then(function (res) {
         if (res.code === 0) {
-        var fileList=res.fileList;
+          var fileList=res.fileList;
+          var newList=[];
+          for(var i=0;i<fileList.length;i++){
+            var file=fileList[i];
+            file.url=api.img+file.name;
+            newList.push(file)
+          }
         _this.setData({
-          fileList: fileList
+          fileList: newList
         })
       }
     });
@@ -90,9 +96,10 @@ Page({
   //加载图片后执行
   readIMG:function(event){
     var _this=this;
+    var user=wx.getStorageSync('user');
     var file=event.detail.file;
     if(file!=null&&file!=""){
-      util.fileUpload(api.fileUpload,file).then((res)=>{
+      util.fileUpload(api.fileUpload,file,user.userId).then((res)=>{
         if (res.code == 0) {
           var fileList=_this.data.fileList;
           fileList.push({isImage: true, name: res.fileName, deletable: true, url: api.img+res.fileName});

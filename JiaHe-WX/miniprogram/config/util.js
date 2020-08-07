@@ -175,7 +175,7 @@ function requestJson(url, data = {}, method = "POST", header = "application/json
 /**
  * 封封微信的的request
  */
-function fileUpload(url, data, method = "",) {
+function fileUpload(url, data, userId,method = "",) {
     wx.showLoading({
         title: '上传中...',
     });
@@ -184,6 +184,9 @@ function fileUpload(url, data, method = "",) {
             filePath: data.path,
             name: 'file',
             url: url,
+            header: {
+                userId:userId
+            },
             success: function (res) {
                 wx.hideLoading();
                 if (res.statusCode == 200) {
