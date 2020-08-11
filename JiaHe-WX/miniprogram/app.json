@@ -9,7 +9,8 @@
     "pages/User/userinfo/userinfo",
     "pages/User/userrelation/userrelation",
     "pages/User/loginauth/loginauth",
-    "pages/User/mycollection/mycollection"
+    "pages/User/mycollection/mycollection",
+    "pages/User/clauseDoc/clauseDoc"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -1,6 +1,8 @@
 const API_BASE_URL = 'http://192.168.100.145/jiahe-web/api/';
 const IMG_BASE_URL='http://192.168.100.145/jiahe-web/statics/img/'
 
+// const API_BASE_URL = 'http://121.37.141.206/jiahe-web/api/';
+// const IMG_BASE_URL='http://121.37.141.206/jiahe-web/statics/img/'
 module.exports = {
   img: IMG_BASE_URL,
   userList: API_BASE_URL + 'user/list', //用户列表
@@ -10,5 +12,6 @@ module.exports = {
   WxRelation: API_BASE_URL+'vx/relationUser',
   getImgList:API_BASE_URL+'utils/getImgs/',
   fileUpload:API_BASE_URL+'utils/fileUpload',
-  fileDel:API_BASE_URL+'utils/fileDel/'
+  fileDel:API_BASE_URL+'utils/fileDel/',
+  fileDownload:API_BASE_URL+'utils/fileDownload',
 }

@@ -77,6 +77,9 @@ Page({
                  //存储用户信息
             wx.setStorageSync('user',res.user);
             wx.navigateBack();//返回上一页面
+          }else{
+            wx.setStorageSync('user',null);
+            wx.navigateBack();//返回上一页面
           }
         });
       }

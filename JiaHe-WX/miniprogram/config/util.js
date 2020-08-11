@@ -50,6 +50,7 @@ function request(url, data = {}, method = "POST", header = "application/x-www-fo
 
             },
             fail: function (err) {
+                wx.hideLoading();
                 reject(err)
             }
         })
@@ -130,6 +131,7 @@ module.exports = {
     login,
     requestJson,
     fileUpload,
+    downloadFile,
 }
 
 
@@ -196,8 +198,38 @@ function fileUpload(url, data, userId,method = "",) {
                 }
             },
             fail: function (err) {
+                wx.hideLoading();
                 reject(err)
             }
-          });
+        });
     }).catch((e) => {});
+}
+
+/**
+ * 封装微信下载功能
+*/
+function   downloadFile(url,filePath){
+    wx.showLoading({
+        title: '下载中...',
+    });
+    return new Promise(function (resolve, reject) {
+        wx.downloadFile({
+        url: url,
+        filePath: filePath,
+        // header: header,
+        timeout: 0,
+        success: function (res) {
+            wx.hideLoading();
+            if (res.statusCode == 200) {
+                resolve(JSON.parse(res.data));
+            }else{
+                reject(res.errMsg);
+            }
+        },
+        fail: function (err) {
+            wx.hideLoading();
+            reject(err)
+        }
+        });
+    })
 }

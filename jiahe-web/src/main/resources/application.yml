@@ -1,11 +1,25 @@
+file:
+#  path: C:/Users/Administrator/Desktop/statics/
+  path: /home/work/jiahe/statics/
 # Tomcat
 server:
+#  port: 443
   tomcat:
     uri-encoding: UTF-8
-  port: 80
+
   servlet:
     context-path: /jiahe-web
+  port: 80
+#  ssl:
+#    key-store: server.keystore
+#    key-alias: tomcat
+#    enabled: true
+#    key-store-password: 123456
+#    key-store-type: JKS
+# Spring
 spring:
+  resources:
+    static-locations: classpath:static/ ,file:${file.path}}
   profiles:
     active: dev
   jackson:
