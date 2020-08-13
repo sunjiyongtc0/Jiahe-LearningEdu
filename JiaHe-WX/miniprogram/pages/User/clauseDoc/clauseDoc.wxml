@@ -1,0 +1,2 @@
+<!--miniprogram/pages/User/clauseDoc/clauseDoc.wxml-->
+<van-button type="primary" size="large"  bind:click="downloadDoc">下载条款</van-button>

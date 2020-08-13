@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sjy.jiahe.dao.Seckill.SuccessKilledDao">
+
+    <select id="findKillCount" resultType="long">
+        select count(*) from t_success_killed where seckill_id=#{seckillId}
+    </select>
+
+    <select id="findKillByUserId" resultType="sjy.jiahe.entity.Seckill.SuccessKilledEntity">
+        select * from t_success_killed where seckill_id=#{seckillId} and user_id=#{userId} limit 1
+    </select>
+</mapper>

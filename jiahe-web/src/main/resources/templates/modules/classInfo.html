@@ -11,7 +11,7 @@
 <body>
 <div id="mapp">
     <div align="center">
-        <h2>精品课程</h2>
+        <h2>精品{{classId}}课程</h2>
         <el-image :src="defaultSrc">
             <div slot="placeholder" class="image-slot">
                 加载中<span class="dot">...</span>
@@ -28,7 +28,7 @@
             <div>大威天龙</div>
         </el-collapse-item>
         <el-collapse-item title="火热报名中。。。" name="3">
-            <el-button type="success" round>立即报名</el-button>
+            <el-button type="success" round  @click="seckill">立即报名</el-button>
         </el-collapse-item>
     </el-collapse>
 </div>
@@ -39,13 +39,47 @@
             defaultSrc:"https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png",
             currentDate: new Date(),
             activeNames:['1'],
+            classId:0,
+            getUrl:'seckill/startQueue/',
 
         },
         methods: {
-            init(){
+            init() {
+                let url = location.search; //获取url中"?"符后的字串
+                if (url.length > 0) { //判断是否携带参数
+                    let params = {};
+                    if (url.indexOf('?') != -1) {
+                        this.isShwoInput = true;
+                        let str = url.substr(url.indexOf('?') + 1);
+                        let strs = str.split('&');
+                        for (let i = 0; i < strs.length; i++) {
+                            params[strs[i].split('=')[0]] = decodeURI(strs[i].split('=')[1]);
+                        }
+                    }
+                    this.classId=params.param;
 
+                }
             },
+            seckill(){
+                var _this=this;
+                console.log(this.classId);
+                $.ajax({
+                    type: "POST",
+                    url: _this.getUrl+_this.classId,
+                    contentType: "application/json;charset=UTF-8",
+                    success: function(r){
+                        if(r.code === 0){
+                            console.log('操作成功');
+                            // _this.init();
+                        }else{
+                            console.log(r.msg);
+                        }
+                    }
+                });
 
+
+
+            }
         },
         mounted() {
 
