@@ -40,7 +40,7 @@
             currentDate: new Date(),
             activeNames:['1'],
             classId:0,
-            getUrl:'seckill/startQueue/',
+            getUrl:'seckill/',
 
         },
         methods: {
@@ -62,10 +62,14 @@
             },
             seckill(){
                 var _this=this;
+                var path="startLock/";
+                if(this.classId%2==0){
+                    path="startRedis/";
+                }
                 console.log(this.classId);
                 $.ajax({
                     type: "POST",
-                    url: _this.getUrl+_this.classId,
+                    url: _this.getUrl+path+_this.classId,
                     contentType: "application/json;charset=UTF-8",
                     success: function(r){
                         if(r.code === 0){

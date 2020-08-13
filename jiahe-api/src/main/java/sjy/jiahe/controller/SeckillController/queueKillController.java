@@ -36,8 +36,8 @@ public class queueKillController  extends BaseController {
      * atomicLoop安全int值可由数据库锁获得
      * 缺点，五人抢三张名额，两个未成功者不能返回秒杀失败
      * */
-    @PostMapping("/startQueue/{seckillId}")
-    public Res startQueue(@PathVariable("seckillId") long seckillId){
+    @PostMapping("/startLock/{seckillId}")
+    public Res startLock(@PathVariable("seckillId") long seckillId){
         long userId =getUserId();
         long killId =  seckillId;
         int  seckillCode=0;
@@ -59,9 +59,8 @@ public class queueKillController  extends BaseController {
             return Res.ok().put("count" ,"名额已满！");
         }
         try {
-            Thread.sleep(10000);
+            Thread.sleep(1000);
             seckillCode= successKilledService.findKillByUserId(seckillId,userId);
-
         } catch (InterruptedException e) {
             e.printStackTrace();
         }finally {
@@ -74,4 +73,27 @@ public class queueKillController  extends BaseController {
 //        }
 
     }
+
+    @PostMapping("/startRedis/{seckillId}")
+    public Res startRedis(@PathVariable("seckillId") long seckillId){
+        long userId =getUserId();
+        int  seckillCode=0;
+        Runnable task = () -> {
+            int state = successKilledService.startSeckilRedis(seckillId,userId);
+            if(state==1||state==2){
+                System.out.println("入库成功");
+            }else{
+            }
+        };
+        executor.execute(task);
+        try {
+            Thread.sleep(1000);
+            seckillCode= successKilledService.findKillByUserId(seckillId,userId);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }finally {
+            return Res.ok().put("seckillCode" ,seckillCode);
+        }
+    }
+
 }

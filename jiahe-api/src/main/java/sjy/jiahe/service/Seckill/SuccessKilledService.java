@@ -9,4 +9,6 @@ public interface SuccessKilledService extends IService<SuccessKilledEntity> {
     int startSeckilLock(long seckillId, long userId);
 
     int  findKillByUserId(long seckillId, long userId);
+
+    int  startSeckilRedis(long seckillId, long userId);
 }
