@@ -1,0 +1,29 @@
+<!--miniprogram/pages/User/scanCode/scanCode.wxml-->
+<van-button type="primary" size="large"  bind:click="getScancode">点击扫码</van-button>
+
+<van-row gutter="20">
+  <van-col span="8">result:</van-col>
+  <van-col span="16">{{result}}</van-col>
+</van-row>
+<van-row gutter="20">
+  <van-col span="8">scanType:</van-col>
+  <van-col span="16">{{scanType}}</van-col>
+</van-row>
+<van-row gutter="20">
+  <van-col span="8">charSet:</van-col>
+  <van-col span="16">{{charSet}}</van-col>
+</van-row>
+<van-row gutter="20">
+  <van-col span="8">path:</van-col>
+  <van-col span="16">{{path}}</van-col>
+</van-row>
+<van-row gutter="20">
+  <van-col span="8">res:</van-col>
+  <van-col span="16">{{res}}</van-col>
+</van-row>
+<van-row gutter="20">
+  <van-col span="8">rawData:</van-col>
+  <van-col span="16">{{rawData}}</van-col>
+</van-row>
+
+

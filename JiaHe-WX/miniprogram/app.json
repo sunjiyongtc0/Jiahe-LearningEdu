@@ -10,7 +10,8 @@
     "pages/User/userrelation/userrelation",
     "pages/User/loginauth/loginauth",
     "pages/User/mycollection/mycollection",
-    "pages/User/clauseDoc/clauseDoc"
+    "pages/User/clauseDoc/clauseDoc",
+    "pages/User/scanCode/scanCode"
   ],
   "window": {
     "backgroundTextStyle": "dark",
